@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="demo-wrap" >
+        <div class="container ">
+            <div class="demo-content">
+                <h1 style="padding-top: 50px;">Hệ Cơ sở dữ liệu Đa phương tiện.</h1>
+                <h3>Nhận dạng giọng nói: trẻ em, nam trưởng thành, nữ trưởng thành.</h3>
+                <p style="font-size: 18px; ">Trần Đức Lương - B19DCCN411</p>
+                <p style="font-size: 18px; ">Nguyễn Ngọc Minh - B19DCCN435</p>
+                <div class="" style="margin-top: 100px;">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <input type="file" class="btn btn-success" name="myfile" id="file"
+                               style="margin-right: 50px; width: 40%;">
+                        <button type="submit" class="btn btn-primary" id="submit">Upload</button>
+                    </form>
+                </div>
+                {% if uploaded_file_url %}
+                    <div style="margin-top: 50px">
+                        <h4>Kết quả:</h4>
+                        <div style="margin-top: 20px; margin-left: 50px">
+                            <h5>File name: {{ uploaded_file_url }}</h5>
+                            <h5>Kết quả nhận dạng: {{ label }}</h5>
+                        </div>
+                    </div>
+
+                {% endif %}
+            </div>
+        </div>
+
+
+    </div>
+
+
+    {#  <p><a href="{% url 'app' %}">Return to home</a></p>#}
+{% endblock %}
